@@ -686,3 +686,9 @@ button.green {
 	background-color: #4CAF50; /* Green */
 	color: white;
 }
+button.right {
+	float:right;
+}
+button.left {
+	float:left;
+}
