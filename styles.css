@@ -693,7 +693,7 @@ button.left {
 	float:left;
 }
 
-.navbar {
+ul.navbar {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -709,5 +709,8 @@ button.left {
   .navbar img {
 	width: 100px;
 	height: 100px;
+  }
+  ul.navbar li > ul{
+	display:none;
   }
   

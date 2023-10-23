@@ -16,4 +16,19 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .catch(error => console.log(error));
     });
-  });
+
+    const navbarItems = document.querySelectorAll(".navbar li");
+
+    navbarItems.forEach(item => {
+        const childUl = item.querySelector("ul");
+
+        item.addEventListener("mouseenter", () => {
+            childUl.style.display = "block";
+        });
+
+        item.addEventListener("mouseleave", () => {
+            childUl.style.display = "none";
+        });
+    });
+});
+
