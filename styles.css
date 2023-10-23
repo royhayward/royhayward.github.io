@@ -693,7 +693,7 @@ button.left {
 	float:left;
 }
 
-.nav {
+.navbar {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -701,12 +701,12 @@ button.left {
 	padding: 0;
   }
   
-  .nav li {
+  .navbar li {
 	margin-right: 20px;
   }
   
-  .nav img {
-	width: 100px;
-	height: 100px;
+  .navbar img {
+	width: 500px;
+	height: 500px;
   }
   
