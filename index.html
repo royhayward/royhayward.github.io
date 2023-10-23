@@ -5,6 +5,7 @@
 	<link rel="stylesheet" href="styles.css">
   </head>
   <body>
+    <div id="nav"></div>
     <article id="3611c04c-b781-460b-bc68-fef8ddaa95d4" class="page sans">
       <header>
         <h1 class="page-title">OIA Index</h1>
@@ -63,3 +64,16 @@
     </article>
   </body>
 </html>
+<scrypt>
+  document.addEventListener("DOMContentLoaded", function() {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "nav.html", true);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        document.getElementById("nav").innerHTML = xhr.responseText;
+      }
+    };
+    xhr.send();
+  });
+  
+</scrypt>
