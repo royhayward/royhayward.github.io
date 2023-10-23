@@ -703,14 +703,9 @@ button.left {
   
   .navbar li {
 	margin-right: 20px;
-	border-left: 1px solid black;
+	list-style-type: none;
   }
-  
-  .navbar li:first-child {
-	border-left: none;
-  }
-
-  
+    
   .navbar img {
 	width: 100px;
 	height: 100px;
