@@ -3,19 +3,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>OIA Index</title>
 	<link rel="stylesheet" href="styles.css">
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      var xhr = new XMLHttpRequest();
-      xhr.open("GET", "nav.html", true);
-      xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-          document.getElementById("nav").innerHTML = xhr.responseText;
-        }
-      };
-      xhr.send();
-    });
-    
-  </script>
+  <script src="/js/compostable.js"></script>
   </head>
   <body>
     <div id="nav"></div>
