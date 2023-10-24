@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const elements = document.querySelectorAll("body > [id]");
     elements.forEach(element => {
       const pageName = element.id;
-      const pageUrl = `${pageName}.html`;
+      const pageUrl = `comp/${pageName}.html`;
       fetch(pageUrl)
         .then(response => {
           if (response.ok) {
