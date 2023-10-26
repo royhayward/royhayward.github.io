@@ -21,3 +21,8 @@ body {
 	justify-content: space-between;
 	padding: 10px 50px 10px 50px;
 }
+
+/* override flatly css */
+figure img {
+	height: auto;
+  }
