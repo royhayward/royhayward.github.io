@@ -4,46 +4,40 @@
     <p class="page-description"></p>
   </header>
   <div class="page-body">
-    <p id="646cdc36-42aa-40a5-b498-a7b93157eac0" class="">
+    <p>
       There are four common patterns:
     </p>
-    <ul id="b33c0ed9-3e39-4a48-a26d-dc79f10802c3" class="bulleted-list">
+    <ul class="bulleted-list">
       <li style="list-style-type: disc">Claim Check Pattern</li>
-    </ul>
-    <ul id="6c9dcdfc-d47f-4473-b948-675e4d9bb078" class="bulleted-list">
       <li style="list-style-type: disc">Content Enricher Pattern</li>
-    </ul>
-    <ul id="848375d1-89a8-4a44-93a4-c2e8e0078710" class="bulleted-list">
       <li style="list-style-type: disc">Message Translator Pattern</li>
-    </ul>
-    <ul id="425491fc-b1c5-4580-8a8d-9396f5e8ff0c" class="bulleted-list">
       <li style="list-style-type: disc">Outbox Pattern</li>
     </ul>
-    <h2 id="4029a9b3-4820-4732-9f4c-7b2184a3d187" class="">Claim Check</h2>
-    <p id="f9cd00d3-1170-4967-b660-c611ce748865" class="">
+    <h2>Claim Check</h2>
+    <p>
       The Claim Check pattern is a way to deal with otherwise large payloads.
       These could be as simple as a big document or they could be a live
       streaming video. In both cases, we would be unwise to try and put this
       content into a JSON file and send it to a message broker. Data that is
       large or inherently binary should be handled as a reference.
     </p>
-    <figure id="2671aac8-3a5b-4d2e-8231-9115f81770a5" class="image">
+    <figure class="image">
       <a href="image/claimcheck_pattern.png">
         <img style="width: 1099px" src="image/claimcheck_pattern.png" />
       </a>
     </figure>
-    <p id="ff1322d2-8c6c-491e-86f0-bf913aca3bc1" class="">
+    <p>
       The JSON or other message will get the metadata, and the reference to this
       large payload. The consumer of the message can reference the payload
       directly to gain access to it at the end point.
     </p>
-    <p id="f2232c75-b2bb-40f8-aab7-12bf64e63fc4" class="">
+    <p>
       For security concerns, this can be handled with a secret or key
       transmitted with the message or already known to the consumer to securely
       access the payload.
     </p>
-    <h2 id="2f1abdae-8f86-495e-8d1c-f4d545f6c131" class="">Content Enricher</h2>
-    <p id="6baed724-64b0-46a0-b72c-e0e405bdaf9d" class="">
+    <h2>Content Enricher</h2>
+    <p>
       The Content Enricher pattern is a way to deal with unnaturally small
       payloads. And example of this is content that contains “magic” IDs or
       other information that expects a high level of context to be understood.
@@ -52,15 +46,15 @@
       explicite and can be handled by the consumer without the high-context
       expected from is point of origin.
     </p>
-    <figure id="c8875cde-788c-4df5-9e6f-82f4484feb45" class="image">
+    <figure class="image">
       <a href="image/enricher_pattern.png">
         <img style="width: 1095px" src="image/enricher_pattern.png" />
       </a>
     </figure>
-    <h2 id="a3d000a0-a55b-4d01-b299-4f6eed5ca4a3" class="">
+    <h2x>
       Message Translator
     </h2>
-    <p id="299ba586-2b7b-4f29-ad55-2856ab56e3cd" class="">
+    <px>
       The Message Translator is similar to the Content Enricher, but instead of
       handling the austerity of high-context data is intended to handle
       incompatibilities in data. The easiest example is a legacy system than is
@@ -68,29 +62,29 @@
       converts this to the compatible standard expected so that the coupling of
       the contract with the consumer does not have include this.
     </p>
-    <figure id="00fe72ab-a49b-4215-91fd-0e0ebd4e92f0" class="image">
+    <figure class="image">
       <a href="image/translator_pattern.png">
         <img style="width: 1085px" src="image/translator_pattern.png" />
       </a>
     </figure>
-    <p id="6d3a3f4e-c544-4a6e-9aef-3739e6e84fa4" class="">
+    <p>
       This can also be seen as an Anti-Corruption layer of the system. It can
       also be part of a Change Data Capture(CDC) process.
     </p>
-    <h2 id="083c41fe-90f7-43dd-8b90-79560ecd45e1" class="">Outbox</h2>
-    <p id="9b77c4c1-eb4d-4d76-af05-6324c0a88a3e" class="">
+    <h2>Outbox</h2>
+    <p>
       The Outbox pattern is used to overcome design issues where we need to
       support more than one delivery. For instance, a message that needs to be
       entered into a database and submitted to a message broker. We need to
       avoid any cases where the message will succeed in one and fail in the
       other.
     </p>
-    <figure id="ffa179bf-51af-49e9-b3e0-76fd606003c1" class="image">
+    <figure class="image">
       <a href="image/outbox_pattern.png">
         <img style="width: 886px" src="image/outbox_pattern.png" />
       </a>
     </figure>
-    <p id="de477a5c-fad1-4661-8138-4d1be57e686f" class="">
+    <p>
       In this pattern, if we do something like write the message to an outbox
       (think of a table in a database). Once it is there all of the operations
       that need this message happen before it is removed from the outbox. (think
@@ -99,12 +93,12 @@
       (imagine that a process is watching for this and deletes the row when
       done.)
     </p>
-    <p id="242a1cca-7991-452a-8b44-ef16c87f1fb3" class="">
+    <p>
       This keeps the system integrity of the different processes in sync without
       forcing a dependency on any of them.
     </p>
-    <h2 id="53956267-02b1-4c74-ae60-cf761bf521ff" class="">Summary</h2>
-    <p id="b98dbfe7-7587-4e60-859b-47f6cedc24f2" class="">
+    <h2>Summary</h2>
+    <p>
       Choosing and using the best pattern for the design and requirements of
       your system will help keep the Event-Driven Architecture moving smoothly
       and increase its maintainability.
