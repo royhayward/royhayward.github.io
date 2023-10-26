@@ -1,0 +1,188 @@
+<article class="page sans">
+  <header>
+    <h1 class="page-title">Machine Learning from Events</h1>
+    <p class="page-description">Page Description</p>
+  </header>
+  <div class="page-body">
+    <p>
+      It all starts with a question. Without a question, there is nothing for
+      the machine to learn. So the first step in our Machine Learning process is
+      to synthesize a question. The more specific the question, the better the
+      learning will be.
+    </p>
+    <p>
+      In our case, we will use the question of, “Will a theft take place?” This
+      is question is specific enough for us to use it as an example. Now that we
+      have that out of the way, lets talk about architecture and workflow.
+    </p>
+    <h2>Architecture</h2>
+    <p>
+      We need data from as many sources as we can find. So our architecture will
+      focus on getting all of this data flowing into a single repository of data
+      that can be analyzed. As that data continues to stream across our system,
+      a process with a prediction model can monitor it and attempt to find a
+      match.
+    </p>
+    <figure class="image">
+      <a href="/image/ai_automation.png">
+        <img style="width: 100%" src="/image/ai_automation.png" />
+      </a>
+      <figcaption>Architecture of AI Automation</figcaption>
+    </figure>
+    <ol>
+      <li>
+        Our Orchestration Application feeds the workflow with all the data
+        related to the question
+      </li>
+      <li>
+        The workflow that gets this does any of the CDC or translation of the
+        information in this stream of data and records the observations into the
+        Observation DB.
+      </li>
+      <li>
+        As new observations are added to the context the Prediction Process will
+        fire events at the Orchestration application whenever there is a
+        positive prediction or answer to the question.
+      </li>
+      <li>
+        The Orchestration Application will take these predictions and send them
+        off as commands to assets or events for other workflows.
+      </li>
+    </ol>
+    <p>
+      This is a piece of the overall architecture. This is the loop that is
+      required for us to make predictions and provide answers to our question,
+      “Will a theft take place?”
+    </p>
+    <h2>Workflow</h2>
+    <p>
+      In our discussion, a workflow is something that is instigated by the
+      Orchestration Application. At the point where it is instigated, it
+      consumes an event. This event is then processed according to business
+      logic. The workflow can have zero to many outputs of data or events.
+    </p>
+    <p>
+      At zero, the workflow can consume an event and determine that there is
+      nothing to do. This might happen if the event is tagged as a test event.
+      Or it could be that the workflow knows to ignore the event because of the
+      business logic.
+    </p>
+    <p>
+      At one or more outputs, the workflow consumes an event and the business
+      logic processes it. The workflow can then take actions to create new
+      events for other workflows, store the data, transform the data in the
+      event, or many other things. All of this will be based on the business
+      logic.
+    </p>
+    <h2>Learning</h2>
+    <p>
+      Now we must talk about the process of Machine Learning. Up to this point
+      all of this could be created with just a human Business Process Engineer.
+      It will start there. There is no reason to ignore human intelligence and
+      experience.
+    </p>
+    <p>
+      So for our question, “Will a theft take place?” we start with a simple
+      algorithm. We have a list of known shoplifters and put their information
+      into the process. Whenever one of them enters the store and the event puts
+      that data into the Observation Database, the process fires it’s prediction
+      at the Orchestration Application.
+    </p>
+    <p>But that is not all we want. So we do more.</p>
+
+    <figure class="image">
+      <a href="/image/ai_ml_automation.png">
+        <img style="width: 100%" src="/image/ai_ml_automation.png" />
+      </a>
+      <figcaption>Architecture of ML powered AI Automation</figcaption>
+    </figure>
+    <p>
+      We add another process to the architecture. This process sees the theft
+      events and looks back at the preceding data. It churns on this information
+      trying to make a model that will predict the theft correctly over a
+      threshold that has been set for accuracy.
+    </p>
+    <p>
+      When a new model is found, it updates the process making predictions with
+      this new algorithm. Now, when this pattern is found in the new
+      observations it sends the new prediction to the Orchestration Application.
+    </p>
+    <h2>Hypothetical</h2>
+    <p>
+      Our retailer, Big Box, has a list of shoplifters. The staff at the
+      entrance has a book of their faces. And they are supposed to be watching
+      for them. But this is not completely reliable. So Big Box adds some
+      cameras with a Facial Feature matching tool to find them more accurately.
+    </p>
+    <p>
+      This is better, but it only works once the shoplifter has been successful
+      the first time. The cameras, people tracking, product tracking, LPR, and
+      cell tracker all put data into the Observation Database.
+    </p>
+    <p>
+      When Big Box runs its Machine Learning process against this data the ML
+      process identifies a common patterns for thefts. The shoplifters are going
+      to the electronics sections of the store and then going to the changing
+      rooms.
+    </p>
+    <p>
+      This pattern of data is added to the Prediction Process and Big Box can
+      now be alerted to a new shoplifter when they fit the pattern. This person
+      can then be flagged and watched at the exit and check-out to prevent the
+      theft.
+    </p>
+    <h2>What Data is Getting Used</h2>
+    <p>
+      There are two classes of events coming in from security sources. Type I
+      and Type II. Each class of event gives us something slightly different.
+    </p>
+    <h3>Type I (No/Low Context Events)</h3>
+    <p>
+      Type I events contain information that is basic and atomic. This is data
+      at a high level. It may be very specific but it does not come with any
+      implied or realized higher level of meaning.
+    </p>
+    <p>
+      A counter like a turn-style is giving us a count of people. The
+      information in these events of entry and exit has no pre-processing or
+      urgency attached. We can still act on it. Like a workflow to turn on
+      lights when people enter the building, the automation is valuable, but the
+      information alone is of limited value.
+    </p>
+    <h3>Type II (Events with Context)</h3>
+    <p>
+      Type II events contain information that has been processed and contains
+      some level of context. Where an LPR camera can send us Type I events with
+      the license plat number. A system that matches against the Hot List of
+      vehicles can have additional urgency and context.
+    </p>
+    <p>
+      An event from a system that is doing its own level of threat analysis
+      before it triggers an event to the system. Loiter detection, parking in
+      the fire lane, or any other higher context activity event give us Type II
+      events.
+    </p>
+    <h3>Type III (Observation Event)</h3>
+    <p>
+      Yes, there is a third type. This data does not come from a security
+      source. This is an event that indicates the bad action has happened. In
+      our example, this event is the theft. We add this to our data, so our ML
+      process has something to work with as it builds the algorithm to predict
+      it. This event is essential to being able to create a predictive process
+      to answer the question we are asking.
+    </p>
+    <h2>Wrap Up</h2>
+    <p>
+      This example is pretty simple but it illustrates what we are doing and how
+      it can help us. ML and AI are not at this time going to have gut feelings
+      or be able to look out at a bunch of random data and produce benefits. But
+      when we create the question and provide the data, ML and AI can identify
+      and make predictions that can help us.
+    </p>
+    <p>
+      By augmenting our human intelligence and pattern recognition with ML and
+      AI we can have a broader view of the situation and provide advance warning
+      of adverse activities. These are the benefits we are looking for.
+    </p>
+  </div>
+</article>
