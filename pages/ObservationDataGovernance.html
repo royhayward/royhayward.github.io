@@ -1,0 +1,43 @@
+<article class="page sans">
+    <header>
+      <h1 class="page-title">Observation Data Governance</h1>
+      <blockquote class="page-description">What is this and why do we need it? </blockquote>
+    </header>
+    <div class="page-body">
+      <h2>What is Observation Data?</h2>
+      <figure class="image">
+        <a href="#">
+          <img  style="margin: auto; max-width: 200px; " src="/image/observation_icon.svg" />
+        </a>
+      </figure>
+      <p>Observation Data is the input information that is available from as many sources as possible. Data from cameras, access control, license plate recognition, social scraping, and so on. All of these ‘observations’ produce a richer picture of the context of what is happening more than a single input showing a person entering or leaving the area or a license plate showing up at one point in time. </p>
+      <p>The outcomes that we get from capturing and storing observation data helps us achieve our mission in two ways. First, with greater context, our automation are able to be more complex. More than just reacting to one input or detection we can now have a reaction that looks at what is happening nearby in both space and time and produce a much more useful and intelligent response.</p>
+      <p>Second, by storing the observation and then analyzing it with a Machine Learning process. We can create predictive algorithms that can warn of things that haven’t happened yet. We can see trends and indicators that can literally see something coming that would require a team of people vigilantly monitoring multiple feeds of input with extensive knowledge of the landscape and trends. Leveraging the observation data we can automate that complex and tedious task to a dashboard of warnings and automated responses. </p>
+      <h2>What does Governance do for this data?</h2>
+      <figure class="image">
+        <a href="#">
+          <img  style="margin: auto; max-width: 200px; " src="/image/governance_icon.svg" />
+        </a>
+      </figure>
+      <p>Governance of the Observation Data is important for a couple of reasons. One of the biggest is that we should not be storing Personal Identification Information in this long-term storage. What we really want to see is the patterns in the observations. </p>
+      <p>Finding those patterns using a Machine Learning process is the first step. After that we want to see when those patterns happen the next time and track how many times they happen and where. </p>
+      <p>Beyond the PII we also need to mask types of data that could cause a bias in the system. If there is a human bias toward red cars, we can mask that by creating a one-way hash of the data. Now only that pattern will show up in the data and this will prevent human bias from entering the system.</p>
+      <p>However, we don’t want to truly randomize the relevant input. The red cars need to show up as the same hashed value so that we can see if there is a pattern the includes that variable and allow us to see trends and make accurate predictions.</p>
+      <h2>What are the best practices recommended for this?</h2>
+      
+      <figure class="image">
+        <a href="#">
+          <img  style="margin: auto; max-width: 200px; " src="/image/best_practice_icon.svg" />
+        </a>
+      </figure>
+      <p>By carefully constructing a method to prevent bias and preserve patterns we build the best practices for Observation Data Governance. These will evolve as the project continues but we will start with these.</p>
+      <ol>
+        <li>Hard PII data should be hashed with an irreversible process. This data is limited and includes Names, Full Addresses, and so forth. </li>
+        <li>Soft PII data should be hashed with a consistent reversible process. This data will include data like Cell Phone IDs, License Plate Numbers, and so forth. Having these as consistent values in the data is required to see the patterns.</li>
+        <li>Bias data should also be hashed with a consistent reversible process. This is data like race or facial feature patterns. We may need to reverse this data to assist with law enforcement, but we don’t want this data overtly in our observation database to prevent the algorithm from unintentionally creating bias.</li>
+        <li>The ability to unmask our hashed data needs to be under control. All reversing of the masking hash needs to be recorded with a purpose. Logged with user credentials and the logs must be reviewed regularly to ensure there is no mishandling of the data. </li>
+      </ol>
+      <p>As we examine the data that is flowing into the observation database, additional best practices will be added to this list as we consult with the consumers of this data. </p>
+      
+    </div>
+  </article>    
