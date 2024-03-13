@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+/*
+These messages provide the information needed to support the use of iViu cell phone and mobile device sensors
+
+*/
+
+message Sensor {
+    string name = 1;
+    string serialNumber = 2;
+    string mac = 3;
+}
+
+message Sensors {
+    repeated Sensor sensors =1;
+}
+
+message Activation{
+    string serialNumber = 1;
+    string clientName = 2;
+    int32 clientID = 3;
+    string locationName = 4;
+    int32 locationID = 5;
+    optional string zipcode = 6;
+    optional string gps = 7;
+    repeated Sensor sensors = 8 ; 
+
+}
+
+
+
