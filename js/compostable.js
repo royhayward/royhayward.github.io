@@ -23,13 +23,13 @@ function getPageName() {
   return pageName;
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+function loadPageParts() {
   const elements = document.querySelectorAll("body > [id]");
   elements.forEach((element) => {
     var pageName = element.id;
-    if (pageName == "index"){
-        var dir = "pages";
-        var pageName = 'index'; 
+    if (pageName == "index") {
+      var dir = "pages";
+      var pageName = "index";
     } else if (pageName == "article") {
       var dir = "pages";
       var pageName = getPageName();
@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (response.ok) {
           return response.text();
         } else {
+          console.log(pageUrl);
           throw new Error("File not found");
         }
       })
@@ -50,7 +51,9 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .catch((error) => console.log(error));
   });
-
+}
+document.addEventListener("DOMContentLoaded", () => {
+  loadPageParts();
   const navbarItems = document.querySelectorAll(".navbar li");
 
   const pickACardElements = document.querySelectorAll("#pick-a-card");
