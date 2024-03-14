@@ -9,19 +9,19 @@ technologies.
 
 message Media {
     int32 eventID = 1;
-    string mediaType = 2;
+    string mediaType = 2; // mp4, jpg, wav, etc
     timestamp when = 3;
-    string url = 4;
+    string url = 4; //if possible, a signed url that will be available for a minimum of 3 hrs
 }
 
 message Tag{
     int32 eventID = 1;
-    string tagLabel = 2;
+    string tagLabel = 2; //actions and attributes like 'theft' or 'gun' or 'shopping cart' or 'aisle 5'
 }
 
 message Object{
     int32 eventID = 1;
-    string ObjectLabel = 2;
+    string ObjectLabel = 2; //car, person, etc.
 }
 
 message Alert{
