@@ -1,0 +1,40 @@
+syntax = "proto3";
+import "google/protobuf/timestamp.proto";
+
+
+/*
+These messages provide the information to create workflows with other Loss-Prevention
+technologies.
+*/
+
+message Media {
+    int32 eventID = 1;
+    string mediaType = 2;
+    timestamp when = 3;
+    string url = 4;
+}
+
+message Tag{
+    int32 eventID = 1;
+    string tagLabel = 2;
+}
+
+message Object{
+    int32 eventID = 1;
+    string ObjectLabel = 2;
+}
+
+message Alert{
+    int32 id = 1; //this is the command center event ID.
+    repeated Object objects = 2;
+    int32 clientID = 3; //this is the id of the client.
+    string clientName = 4; //name of the client
+    int32 locationID = 5;
+    string locationName = 6;
+    string eventGPS = 7;
+    timestamp eventDateTime = 8;
+    repeated Media medias = 9;
+    string notes = 10;
+    repeated Tag tags = 11;
+
+}
