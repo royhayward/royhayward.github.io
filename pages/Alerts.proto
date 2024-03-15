@@ -31,7 +31,7 @@ message Alert{
     string clientName = 4; //name of the client
     int32 locationID = 5;
     string locationName = 6;
-    string eventGPS = 7;
+    string eventGPS = 7; // longitude,latitude
     timestamp eventDateTime = 8;
     repeated Media medias = 9;
     string notes = 10;
